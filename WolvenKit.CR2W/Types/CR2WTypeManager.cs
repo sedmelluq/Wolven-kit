@@ -442,8 +442,6 @@ namespace WolvenKit.CR2W.Types
             Register("CParticleEmitter", new CParticleEmitter(null));
             Register("CDecalSpawner", new CDecalSpawner(null));
             Register("CEvaluatorFloatCurve", new CEvaluatorFloatCurve(null));
-            Register("CurveInfo", new CEvaluatorFloatCurve.CurveInfo(null));
-            Register("CurvePiece", new CEvaluatorFloatCurve.CurvePiece(null));
             // Register("SSeedKeyValue", new SSeedKeyValue(null)); // is a vector
             //Register("SDynamicDecalMaterialInfo", new SDynamicDecalMaterialInfo(null)); //rfuzzo: disabled because it couldn't read the stream
             //Register("SParticleEmitterLODLevel", new SParticleEmitterLODLevel(null)); // is a vector
