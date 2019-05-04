@@ -439,14 +439,17 @@ namespace WolvenKit.CR2W.Types
             // Testing area. Put your CVectors which don't work fully yet here.
 #if DEBUG
             // *.w2p
-            //Register("CParticleEmitter", new CParticleEmitter(null));
+            Register("CParticleEmitter", new CParticleEmitter(null));
             Register("CDecalSpawner", new CDecalSpawner(null));
-            Register("SSeedKeyValue", new SSeedKeyValue(null));
+            Register("CEvaluatorFloatCurve", new CEvaluatorFloatCurve(null));
+            Register("CurveInfo", new CEvaluatorFloatCurve.CurveInfo(null));
+            Register("CurvePiece", new CEvaluatorFloatCurve.CurvePiece(null));
+            // Register("SSeedKeyValue", new SSeedKeyValue(null)); // is a vector
             //Register("SDynamicDecalMaterialInfo", new SDynamicDecalMaterialInfo(null)); //rfuzzo: disabled because it couldn't read the stream
-            Register("SParticleEmitterLODLevel", new SParticleEmitterLODLevel(null));
-            Register("EmitterDelaySettings", new EmitterDelaySettings(null));
-            Register("EmitterDurationSettings", new EmitterDurationSettings(null));
-            Register("CParticleSystem", new CParticleSystem(null));
+            //Register("SParticleEmitterLODLevel", new SParticleEmitterLODLevel(null)); // is a vector
+            //Register("EmitterDelaySettings", new EmitterDelaySettings(null)); // is a vector
+            //Register("EmitterDurationSettings", new EmitterDurationSettings(null)); // is a vector
+            //Register("CParticleSystem", new CParticleSystem(null)); // is a vector
 
             // *.w2l
             Register("CLayerInfo", new CLayerInfo(null));
@@ -3113,6 +3116,7 @@ namespace WolvenKit.CR2W.Types
                 "CxplorationTransitionTurnToJump",
                 "DebuffProjectile",
                 "EP1Chandelier",
+                "EmitterDelaySettings",
                 "EmitterDurationSettings",
                 "EntitySlot",
                 "EntitySlot",
@@ -3129,6 +3133,7 @@ namespace WolvenKit.CR2W.Types
                 "ISpawnTreeSetLootInitializer",
                 "ISpawnTreeSpawnAroundNodeInitializer",
                 "Matrix",
+                "ParticleBurst",
                 "PoisonProjectile",
                 "QuestScriptParam",
                 "StorySceneCameraDefinition",
@@ -3176,6 +3181,7 @@ namespace WolvenKit.CR2W.Types
                 "SMapPinType",
                 "SMeshSoundInfo",
                 "SParticleEmitterLODLevel",
+                "SSeedKeyValue",
                 "SSSBoneTransform",
                 "SStorySceneAttachmentInfo",
                 "SStorySceneCameraLightMod",

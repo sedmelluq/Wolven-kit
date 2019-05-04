@@ -241,5 +241,25 @@ namespace WolvenKit.CR2W
                 bw.Write(b);
             }
         }
+
+        public static CVariable CopyViaBuffer(CVariable source, CVariable destination)
+        {
+            using (MemoryStream temporaryBuffer = new MemoryStream())
+            {
+                using (BinaryWriter writer = new BinaryWriter(temporaryBuffer))
+                {
+                    source.Write(writer);
+                }
+
+                temporaryBuffer.Position = 0;
+
+                using (BinaryReader reader = new BinaryReader(temporaryBuffer))
+                {
+                    destination.Read(reader, (uint)temporaryBuffer.Length);
+                }
+            }
+
+            return destination;
+        }
     }
 }
