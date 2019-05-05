@@ -65,6 +65,70 @@ namespace WolvenKit.CR2W.Types
 
             return copy;
         }
+
+        public override CVariable CreateDefaultVariable()
+        {
+            return elementFactory.Invoke(cr2w);
+        }
+
+        public override bool CanAddVariable(IEditableVariable newvar)
+        {
+            return newvar == null || newvar is T;
+        }
+
+        public override string ToString()
+        {
+            var builder = new StringBuilder().Append(elements.Count);
+
+            if (elements.Count > 0)
+            {
+                builder.Append(":");
+
+                foreach (var element in elements)
+                {
+                    builder.Append(" <").Append(element.ToString()).Append(">");
+
+                    if (builder.Length > 100)
+                    {
+                        builder.Remove(100, builder.Length - 100);
+                        break;
+                    }
+                }
+            }
+
+            return builder.ToString();
+        }
+
+        public override bool CanRemoveVariable(IEditableVariable child)
+        {
+            return true;
+        }
+
+        public override void RemoveVariable(IEditableVariable child)
+        {
+            if (child is T)
+            {
+                elements.Remove(child as T);
+                UpdateNames();
+            }
+        }
+
+        public override void AddVariable(CVariable variable)
+        {
+            if (variable is T)
+            {
+                variable.Name = elements.Count.ToString();
+                elements.Add(variable as T);
+            }
+        }
+
+        private void UpdateNames()
+        {
+            for (int i = 0; i < elements.Count; i++)
+            {
+                elements[i].Name = i.ToString();
+            }
+        }
     }
 
     class CBuffers

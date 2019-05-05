@@ -200,29 +200,32 @@ namespace WolvenKit
                 return;
             }
 
-            CVariable newvar = null;
+            CVariable newvar = node.Variable.CreateDefaultVariable();
 
-            if (node.Variable is CArray)
+            if (newvar == null)
             {
-                var nodearray = (CArray) node.Variable;
-                newvar = CR2WTypeManager.Get().GetByName(nodearray.elementtype, "", Chunk.cr2w, false);
-                if (newvar == null)
-                    return;
-            }
-            else
-            {
-                var frm = new frmAddVariable();
-                if (frm.ShowDialog() != DialogResult.OK)
+                if (node.Variable is CArray)
                 {
-                    return;
+                    var nodearray = (CArray)node.Variable;
+                    newvar = CR2WTypeManager.Get().GetByName(nodearray.elementtype, "", Chunk.cr2w, false);
+                    if (newvar == null)
+                        return;
                 }
+                else
+                {
+                    var frm = new frmAddVariable();
+                    if (frm.ShowDialog() != DialogResult.OK)
+                    {
+                        return;
+                    }
 
-                newvar = CR2WTypeManager.Get().GetByName(frm.VariableType, frm.VariableName, Chunk.cr2w, false);
-                if (newvar == null)
-                    return;
+                    newvar = CR2WTypeManager.Get().GetByName(frm.VariableType, frm.VariableName, Chunk.cr2w, false);
+                    if (newvar == null)
+                        return;
 
-                newvar.Name = frm.VariableName;
-                newvar.Type = frm.VariableType;
+                    newvar.Name = frm.VariableName;
+                    newvar.Type = frm.VariableType;
+                }
             }
 
             if (newvar is CHandle)

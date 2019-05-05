@@ -253,5 +253,10 @@ namespace WolvenKit.CR2W
 
             return chunk;
         }
+
+        public CVariable CreateDefaultVariable()
+        {
+            return null;
+        }
     }
 }

@@ -54,5 +54,10 @@ namespace WolvenKit.CR2W.Editors
         {
             return Object.ToString();
         }
+
+        public CVariable CreateDefaultVariable()
+        {
+            return null;
+        }
     }
 }

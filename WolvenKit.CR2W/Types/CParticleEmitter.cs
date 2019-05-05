@@ -6,23 +6,23 @@ namespace WolvenKit.CR2W.Types
 {
     class CParticleEmitter : CVector
     {
-        public SParticleEmitterSomething something;
+        public SParticleEmitterModuleData moduleData;
 
         public CParticleEmitter(CR2WFile cr2w) : base(cr2w)
         {
-            something = new SParticleEmitterSomething(cr2w) { Name = "something", Type = "SParticleEmitterSomething" };
+            moduleData = new SParticleEmitterModuleData(cr2w) { Name = "moduleData", Type = "ParticleEmitterModuleData" };
         }
 
         public override void Read(BinaryReader file, uint size)
         {
             base.Read(file, size);
-            something.Read(file, size);
+            moduleData.Read(file, size);
         }
 
         public override void Write(BinaryWriter file)
         {
             base.Write(file);
-            something.Write(file);
+            moduleData.Write(file);
         }
 
         public override CVariable Create(CR2WFile cr2w)
@@ -34,7 +34,7 @@ namespace WolvenKit.CR2W.Types
         {
             return new List<IEditableVariable>(variables)
             {
-                something
+                moduleData
             };
         }
     }

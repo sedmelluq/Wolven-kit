@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using WolvenKit.CR2W.Editors;
 
@@ -42,7 +43,7 @@ namespace WolvenKit.CR2W.Types
 
         public override CVariable Create(CR2WFile cr2w)
         {
-            return new CVector3D(cr2w);
+            return new CVector2D(cr2w);
         }
 
         public override CVariable Copy(CR2WCopyAction context)
@@ -56,15 +57,12 @@ namespace WolvenKit.CR2W.Types
 
         public override List<IEditableVariable> GetEditableVariables()
         {
-            var vars = new List<IEditableVariable>();
-            vars.Add(x);
-            vars.Add(y);
-            return vars;
+            return new List<IEditableVariable>() { x, y };
         }
 
         public override string ToString()
         {
-            return "CVector2D";
+            return String.Format(CultureInfo.InvariantCulture, "V2[{0:0.00}, {1:0.00}]", x.val, y.val);
         }
     }
 }

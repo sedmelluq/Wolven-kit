@@ -71,6 +71,11 @@ namespace WolvenKit.CR2W.Types
             return false;
         }
 
+        public virtual CVariable CreateDefaultVariable()
+        {
+            return null;
+        }
+
         public virtual void RemoveVariable(IEditableVariable child)
         {
         }
